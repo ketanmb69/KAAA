@@ -33,11 +33,11 @@ class HospitalTestCase(TestCase):
 	""" Test for Model Hospital """
 	
 	def setUp(self):
-		Hospital.objects.create(name="Virtual Clinic",phone="9876543210",location=Location.objects.create(city="Mangalore",zip="575026",state="Karnataka",country="India",address="Mukka"))
+		Hospital.objects.create(name="3AK",phone="9876543210",location=Location.objects.create(city="Mangalore",zip="575026",state="Karnataka",country="India",address="Mukka"))
 
 	def testHospital(self):
 		hospital = Hospital.objects.get(phone="9876543210")
-		self.assertEqual(hospital.name,"Virtual Clinic")
+		self.assertEqual(hospital.name,"3AK")
 		self.assertEqual(hospital.location.city,"Mangalore")
 		self.assertEqual(hospital.location.zip,"575026")
 		self.assertEqual(hospital.location.state,"Karnataka")

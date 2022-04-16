@@ -41,11 +41,11 @@ nav.sidebar{
     }
 
     nav.sidebar .navbar-nav > li:first-child{
-      border-top: 1px #1a242f solid;
+      border-top: 1px #7e7c2d solid;
     }
 
     nav.sidebar .navbar-nav > li{
-      border-bottom: 1px #1a242f solid;
+      border-bottom: 1px #8b7e43 solid;
     }
 
     nav.sidebar .navbar-nav .open .dropdown-menu {
@@ -63,7 +63,7 @@ nav.sidebar{
     }
 
     .navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
-      color: #777;
+      color: rgb(57, 155, 147);
     }
 
     nav.sidebar{

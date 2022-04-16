@@ -14,7 +14,7 @@ class InvalidUser(TestCase):
 		self.client = Client()
 
 	def test_invalidUser(self):
-		response = self.client.post('/',{'username':'test@virtualclinic.com','password':'test'})
+		response = self.client.post('/',{'username':'test@3AK.com','password':'test'})
 		self.assertRedirects(response,'/setup/', status_code=302, target_status_code=200, msg_prefix='')
 
 

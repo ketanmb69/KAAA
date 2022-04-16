@@ -49,7 +49,7 @@ def create_view(request):
         form.disable_field('doctor')
         form.date = datetime.today()
     template_data['form'] = form
-    return render(request, 'virtualclinic/prescription/create.html', template_data)
+    return render(request, '3AK/prescription/create.html', template_data)
 
 
 def list_view(request):
@@ -81,7 +81,7 @@ def list_view(request):
     else:
         prescriptions = Prescription.objects.all()
     template_data['query'] = prescriptions.order_by('date')
-    return render(request,'virtualclinic/prescription/list.html',template_data)
+    return render(request,'3AK/prescription/list.html',template_data)
 
 
 def update_view(request):
@@ -117,4 +117,4 @@ def update_view(request):
     else:
         form = PrescriptionForm(prescription.get_populated_fields())
     template_data['form'] = form
-    return render(request, 'virtualclinic/prescription/update.html', template_data)
+    return render(request, '3AK/prescription/update.html', template_data)

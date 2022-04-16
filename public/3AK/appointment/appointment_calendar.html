@@ -1,24 +1,24 @@
 {% load app_filters %}
 <div id='appointment-calendar'></div>
-{% include "virtualclinic/appointment/appointment_modal.html" %}
+{% include "3AK/appointment/appointment_modal.html" %}
 <script type="text/javascript">
     var healthnet = {};
     function displayDeleteConfirmation(){
         var startTime = moment(healthnet.lastevent.startTime).format("MMMM Do h:mm a");
-        document.getElementById('confirm-modal-body').innerHTML = 'Are you sure you want to cancel your appointment on '.concat(startTime, ' at ', virtualclinic.lastevent.hospital, '?');
+        document.getElementById('confirm-modal-body').innerHTML = 'Are you sure you want to cancel your appointment on '.concat(startTime, ' at ', 3AK.lastevent.hospital, '?');
         document.getElementById('confirm-modal-hidden').value = healthnet.lastevent.id;
         $('#confirm-modal').modal()
         $('#options-modal').modal('hide')
     }
     function displayAppointmentManagement(){
-        var startTime = moment(virtualclinic.lastevent.startTime).format("MMMM Do h:mm a");
+        var startTime = moment(3AK.lastevent.startTime).format("MMMM Do h:mm a");
         document.getElementById('options-modal-body').innerHTML =
                 'Showing options for your appointment on '.concat(
-                        virtualclinic.lastevent.formatted_start,
+                        3AK.lastevent.formatted_start,
                         ' until ',
-                        virtualclinic.lastevent.formatted_end,
+                        3AK.lastevent.formatted_end,
                         ' at ',
-                        virtualclinic.lastevent.hospital,
+                        3AK.lastevent.hospital,
                         '...');
         document.getElementById('options-modal-link-update').href = '/appointment/update/?pk='.concat(healthnet.lastevent.id);
         document.getElementById('options-modal-link-delete').onclick = displayDeleteConfirmation;
@@ -34,7 +34,7 @@
             aspectRatio: 2.25,
             editable: false,
             eventClick: function(event, jsEvent, view) {
-                virtualclinic.lastevent = event;
+                3AK.lastevent = event;
                 displayAppointmentManagement(event.id, event.startTime, event.hospital);
             },
             eventMouseover: function(calEvent, jsEvent, view) {

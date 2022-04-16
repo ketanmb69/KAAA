@@ -80,11 +80,11 @@
             </div>
         </div>
     </div>
-    {% include "virtualclinic/appointment/appointment_modal.html" %}
+    {% include "3AK/appointment/appointment_modal.html" %}
     <script type="text/javascript">
-        var virtualclinic = {};
-        virtualclinic.active = [];
-        virtualclinic.cancelled = [];
+        var 3AK = {};
+        3AK.active = [];
+        3AK.cancelled = [];
         function configureModal(pk, start, hospital) {
             document.getElementById('confirm-modal-body').innerHTML = 'Are you sure you want to cancel your appointment on '.concat(start, ' at ', hospital, '?');
             document.getElementById('confirm-modal-hidden').value = pk;
@@ -92,12 +92,12 @@
         function displayActive() {
             var table = $('#datatable').DataTable();
             table.rows().remove();
-            table.rows.add(virtualclinic.active).draw();
+            table.rows.add(3AK.active).draw();
         }
         function displayCancelled() {
             var table = $('#datatable').DataTable();
             table.rows().remove();
-            table.rows.add(virtualclinic.cancelled).draw();
+            table.rows.add(3AK.cancelled).draw();
         }
         $(document).ready(function() {
             $('#datatable').DataTable({
@@ -108,9 +108,9 @@
             });
             $('#datatable').DataTable().rows().every( function () {
                 if(this.data()[5] == "Active" || this.data()[5] == "Active") {
-                    virtualclinic.active.push(this.data());
+                    3AK.active.push(this.data());
                 } else if(this.data()[5] == "Cancelled") {
-                    virtualclinic.cancelled.push(this.data());
+                    3AK.cancelled.push(this.data());
                 }
                 console.log("PARSE")
             });

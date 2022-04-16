@@ -1,4 +1,4 @@
-# Virtual Clinic - An Integrated Care System
+# 3AK - An Integrated Care System
 
 [![Build Status](https://travis-ci.org/mishal23/virtual-clinic.svg?branch=master)](https://travis-ci.org/mishal23/virtual-clinic)
 [![Coverage Status](https://img.shields.io/codecov/c/github/mishal23/virtual-clinic.svg)](https://codecov.io/gh/mishal23/virtual-clinic)
@@ -74,11 +74,11 @@ A software to simplify the process of Health Care in hospitals to help the patie
 
 - All the documents are in `docs` folder.
 - All the UML Diagrams are in `UML Diagrams` folder.
-- In the virtualclinic folder
+- In the 3AK folder
   - `public` folder contains all the templates.
   - `server` folder contains the views (business logic).
   - `testing` folder contains all the tests cases.
-  - `virtualclinic` folder contains Django configuration files for the project.
+  - `3AK` folder contains Django configuration files for the project.
 
 ## Contributing
 

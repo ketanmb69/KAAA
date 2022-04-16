@@ -24,9 +24,9 @@ class TestFormValidators(TestCase):
 		self.assertIsNone(validate_birthday(self.birthday))
 
 	def test_validate_username_exists(self):
-		User.objects.create(username="test@virtualclinic.com",password="test")
-		self.assertRaises(forms.ValidationError,validate_username_exists,'test1@virtualclinic.com' )
+		User.objects.create(username="test@3AK.com",password="test")
+		self.assertRaises(forms.ValidationError,validate_username_exists,'test1@3AK.com' )
 
 	def test_validate_username_available(self):
-		User.objects.create(username="test@virtualclinic.com",password="test")
-		self.assertRaises(forms.ValidationError, validate_username_available, "test@virtualclinic.com")
+		User.objects.create(username="test@3AK.com",password="test")
+		self.assertRaises(forms.ValidationError, validate_username_available, "test@3AK.com")

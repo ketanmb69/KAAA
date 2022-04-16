@@ -23,7 +23,7 @@ def list_view(request):
     message.parse_message_archive(request, template_data)
     template_data['messages'] = Message.objects.filter(Q(target=request.user.account) | Q(sender=request.user.account))
     template_data['account'] = sanitize_js(request.user.account.profile.__str__())
-    return render(request, 'virtualclinic/message/list.html', template_data)
+    return render(request, '3AK/message/list.html', template_data)
 
 
 def new_view(request):
@@ -59,4 +59,4 @@ def new_view(request):
         form = MessageForm(default)
         form.clear_errors()
     template_data['form'] = form
-    return render(request, 'virtualclinic/message/new.html', template_data)
+    return render(request, '3AK/message/new.html', template_data)

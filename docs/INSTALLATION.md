@@ -1,4 +1,4 @@
-# Virtual Clinic
+# 3AK
 
 ## Installations
 
@@ -29,7 +29,7 @@ virtualenv ENV
 cd ENV
 source bin/activate
 pip install --upgrade setuptools
-cd virtualclinic
+cd 3AK
 pip install -r requirements.txt
 ```
 

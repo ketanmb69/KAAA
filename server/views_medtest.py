@@ -42,7 +42,7 @@ def create_view(request):
         form._errors = {}
     #form.disable_field('doctor')
     template_data['form'] = form
-    return render(request,'virtualclinic/medtest/upload.html', template_data)
+    return render(request,'3AK/medtest/upload.html', template_data)
 
 
 def list_view(request):
@@ -62,7 +62,7 @@ def list_view(request):
         template_data['query'] = MedicalTest.objects.all()
     else:
         template_data['query'] = MedicalTest.objects.filter(private=False)
-    return render(request, 'virtualclinic/medtest/list.html', template_data)
+    return render(request, '3AK/medtest/list.html', template_data)
 
 
 def display_view(request):
@@ -110,7 +110,7 @@ def display_view(request):
         template_data['img5'] = medicaltest.image5
     else:
         return HttpResponseRedirect('/medtest/list')
-    return render(request, 'virtualclinic/medtest/display.html', template_data)
+    return render(request, '3AK/medtest/display.html', template_data)
 
 
 def update_view(request):
@@ -150,4 +150,4 @@ def update_view(request):
     if request.user.account.role == Account.ACCOUNT_DOCTOR:
         form.disable_field('doctor')
     template_data['form'] = form
-    return render(request,'virtualclinic/medtest/update.html', template_data)
+    return render(request,'3AK/medtest/update.html', template_data)

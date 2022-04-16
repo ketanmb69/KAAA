@@ -1,6 +1,7 @@
 from django.conf.urls import url
 from django.conf.urls.static import static
 from django.conf import settings
+from django.urls import include, path
 
 from server import views
 from server import views_home
@@ -69,4 +70,11 @@ urlpatterns = [
     url(r'^medicalinfo/patient/$', views_medicalinfo.update_view, name='medicalinfo/patient'),
 
     url(r'^pdf/$', GeneratePdf.as_view()),
+    
+#    path('', include('social_django.urls')),
+#    path('logout/', views.logout),
+#   path("profile/", views_home.profile, name="profile"),
+#    path("login", views.login, name="login"),
+#    path("callback", views_home.callback, name="callback"),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

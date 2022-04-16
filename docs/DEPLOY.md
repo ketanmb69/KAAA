@@ -1,11 +1,11 @@
 ## Steps to Deploy
-- Django project `ProjectName: virtualclinic` and `Application Name: virtualclinic`
+- Django project `ProjectName: 3AK` and `Application Name: 3AK`
 - After starting the virtual environment: 
 ```
 pip install dj-database-url gunicorn psycopg2 whitenoise
 ```
 - Make **requirements.txt** file by ```pip freeze > requirements.txt```
-- Create a file named **Procfile** and added ```web: gunicorn virtualclinic.wsgi```
+- Create a file named **Procfile** and added ```web: gunicorn 3AK.wsgi```
 - Create a file named **runtime.txt** and added the python version being used, for me ```python-3.5.2```
 - In **settings.py**
 ```python

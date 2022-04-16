@@ -90,7 +90,7 @@ def view_archived_users(request):
     template_data = views.parse_session(request)
     # Proceed with the rest of the view
     template_data['query'] = Account.objects.filter(archive=True)
-    return render(request, 'virtualclinic/admin/archived_users.html', template_data)
+    return render(request, '3AK/admin/archived_users.html', template_data)
 
 
 def restore_user(request):
@@ -136,7 +136,7 @@ def users_view(request):
             template_data['alert_success'] = "Updated" + account.user.username + "'s role!"
     # Parse search sorting
     template_data['query'] = Account.objects.filter(archive=False).order_by('-role')
-    return render(request,'virtualclinic/admin/users.html', template_data)
+    return render(request,'3AK/admin/users.html', template_data)
 
 
 def activity_view(request):
@@ -148,7 +148,7 @@ def activity_view(request):
     # Proceed with the rest of the view
     # Parse search sorting
     template_data['query'] = Action.objects.all().order_by('-timePerformed')
-    return render(request,'virtualclinic/admin/activity.html',template_data)
+    return render(request,'3AK/admin/activity.html',template_data)
 
 
 def view_speciality(request):
@@ -159,7 +159,7 @@ def view_speciality(request):
     template_data = views.parse_session(request)
     # Proceed with the rest of the view
     template_data['query'] = Speciality.objects.all()
-    return render(request, 'virtualclinic/admin/speciality.html', template_data)
+    return render(request, '3AK/admin/speciality.html', template_data)
 
 
 def view_symptom(request):
@@ -170,7 +170,7 @@ def view_symptom(request):
     template_data = views.parse_session(request)
     # Proceed with the rest of the view
     template_data['query'] = Symptom.objects.all()
-    return render(request, 'virtualclinic/admin/symptoms.html', template_data)
+    return render(request, '3AK/admin/symptoms.html', template_data)
 
 
 def add_speciality(request):
@@ -200,7 +200,7 @@ def add_speciality(request):
     else:
         form = SpecialityForm()
     template_data['form'] = form
-    return render(request, 'virtualclinic/admin/add_speciality.html', template_data)
+    return render(request, '3AK/admin/add_speciality.html', template_data)
 
 def add_symptom(request):
     # Authentication check
@@ -229,7 +229,7 @@ def add_symptom(request):
     else:
         form = SymptomForm()
     template_data['form'] = form
-    return render(request, 'virtualclinic/admin/add_symptom.html', template_data)
+    return render(request, '3AK/admin/add_symptom.html', template_data)
 
 
 def add_hospital_view(request):
@@ -266,7 +266,7 @@ def add_hospital_view(request):
     else:
         form = HospitalForm()
     template_data['form'] = form
-    return render(request,'virtualclinic/admin/add_hospital.html', template_data)
+    return render(request,'3AK/admin/add_hospital.html', template_data)
 
 
 def createemployee_view(request):
@@ -293,7 +293,7 @@ def createemployee_view(request):
     else:
         form = EmployeeRegistrationForm()
     template_data['form'] = form
-    return render(request,'virtualclinic/admin/createemployee.html', template_data)
+    return render(request,'3AK/admin/createemployee.html', template_data)
 
 
 def statistic_view(request):
@@ -344,7 +344,7 @@ def statistic_view(request):
         template_data['total_registered'] = 0
     template_data['form'] =form
 
-    return render(request,'virtualclinic/admin/statistics.html', template_data)
+    return render(request,'3AK/admin/statistics.html', template_data)
 
 
 def csv_import_view(request):
@@ -375,12 +375,12 @@ def csv_import_view(request):
                 else:
                     template_data['alert_danger'] = "Invalid CSV format."
                 template_data['form'] = form
-                return render(request,'virtualclinic/admin/import.html', template_data)
+                return render(request,'3AK/admin/import.html', template_data)
         else:
             template_data['alert_danger'] = "Please choose a file to upload"
     form = ImportForm()
     template_data['form'] = form
-    return render(request,'virtualclinic/admin/import.html',template_data)
+    return render(request,'3AK/admin/import.html',template_data)
 
 
 def handle_user_csv(f):
@@ -497,7 +497,7 @@ def csv_export_view(request):
         else:
             template_data['alert_danger'] = 'Please choose a file to download'
     template_data['form'] = ExportForm()
-    return render(request,'virtualclinic/admin/export.html', template_data)
+    return render(request,'3AK/admin/export.html', template_data)
 
 
 def generate_user_csv():

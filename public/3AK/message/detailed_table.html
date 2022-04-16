@@ -50,12 +50,12 @@
 
     </tbody>
 </table>
-{% include "virtualclinic/message/read_modal.html" %}
+{% include "3AK/message/read_modal.html" %}
 <script type="text/javascript">
-    var virtualclinic = {};
-    virtualclinic.received = [];
-    virtualclinic.sent = [];
-    virtualclinic.deleted = [];
+    var 3AK = {};
+    3AK.received = [];
+    3AK.sent = [];
+    3AK.deleted = [];
     function configureModal(pk, header, target, sender, body){
         document.getElementById('read-modal-title').innerHTML = header;
         document.getElementById('read-modal-body').innerHTML = '<p>From: '.concat(sender, '<br>To: ', target, '</p><hr><p>', body, '</p>');
@@ -64,7 +64,7 @@
     function displayDeleted() {
         var table = $('#message-detailed-table').DataTable();
         table.rows().remove();
-        table.rows.add(virtualclinic.sent).draw();
+        table.rows.add(3AK.sent).draw();
     }
     $(document).ready(function() {
         $('#message-detailed-table').DataTable({
@@ -77,19 +77,19 @@
         });
         $('#message-detailed-table').DataTable().rows().every( function () {
             if(this.data()[0] == '{{ account }}' && this.data()[5] == 'False') {
-                virtualclinic.received.push(this.data());
+                3AK.received.push(this.data());
             }
             if(this.data()[1] == '{{ account }}' && this.data()[5] == 'False') {
-                virtualclinic.sent.push(this.data());
+                3AK.sent.push(this.data());
             }
             if(this.data()[5] == 'True') {
-                virtualclinic.deleted.push(this.data());
+                3AK.deleted.push(this.data());
             }
         });
         function defaultView() {
             var table = $('#message-detailed-table').DataTable();
             table.rows().remove();
-            table.rows.add(virtualclinic.received).draw();
+            table.rows.add(3AK.received).draw();
         }
         $('#messages-received').click(function (e) {
             defaultView();
@@ -97,12 +97,12 @@
         $('#messages-sent').click(function (e) {
             var table = $('#message-detailed-table').DataTable();
             table.rows().remove();
-            table.rows.add(virtualclinic.sent).draw();
+            table.rows.add(3AK.sent).draw();
         });
         $('#messages-deleted').click(function (e) {
             var table = $('#message-detailed-table').DataTable();
             table.rows().remove();
-            table.rows.add(virtualclinic.deleted).draw();
+            table.rows.add(3AK.deleted).draw();
         });
         defaultView();
     });

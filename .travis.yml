@@ -31,7 +31,7 @@ script:
 #   coverity_scan:
 #     project:
 #       name: "mishal23/virtual-clinic"
-#       description: "Virtual Clinic"
+#       description: "3AK"
 #     notification_email: shahmishal1998@gmail.com
 #     build_command_prepend: "<Your build preprocessing command here>"
 #     build_command: "<Your build command here>"

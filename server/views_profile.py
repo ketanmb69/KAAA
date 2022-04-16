@@ -28,7 +28,7 @@ def profile_view(request):
         template_data['total_registered'] = Action.objects.filter(description__icontains="registered").count()
     message.parse_message_archive(request, template_data)
     template_data['messages'] = Message.objects.filter(target=request.user.account, target_deleted=False)
-    return render(request, 'virtualclinic/profile.html', template_data)
+    return render(request, '3AK/profile.html', template_data)
 
 
 def password_view(request):
@@ -54,7 +54,7 @@ def password_view(request):
     else:
         form = PasswordForm()
     template_data['form'] = form
-    return render(request,'virtualclinic/profile/password.html',template_data)
+    return render(request,'3AK/profile/password.html',template_data)
 
 
 def update_view(request):
@@ -81,4 +81,4 @@ def update_view(request):
         else:
             form = ProfileForm(profile.get_populated_fields())
     template_data['form'] = form
-    return render(request, 'virtualclinic/profile/update.html', template_data)
+    return render(request, '3AK/profile/update.html', template_data)

@@ -10,6 +10,7 @@ from server.utils import render_to_pdf
 from django.views.generic import View 
 from django.template.loader import get_template
 import socket
+from django.contrib.auth import logout as django_logout
 
 
 class GeneratePdf(View):
@@ -128,3 +129,5 @@ def register_user(email, password, firstname, lastname, role, speciality=None):
 
 def sanitize_js(string):
     return string.replace("\\","\\\\").replace("'","\\'")
+
+

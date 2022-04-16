@@ -19,7 +19,7 @@ def list_view(request):
     template_data = views.parse_session(request)
     # Proceed with rest of the view
     template_data['query'] = MedicalInfo.objects.filter(account__role=Account.ACCOUNT_PATIENT)
-    return render(request,'virtualclinic/medicalinfo/list.html',template_data)
+    return render(request,'3AK/medicalinfo/list.html',template_data)
 
 
 def update_view(request):
@@ -64,4 +64,4 @@ def update_view(request):
         form = MedicalInfoForm(medicalinfo.get_populated_fields())
     template_data['form'] = form
     form.disable_field('account')
-    return render(request,'virtualclinic/medicalinfo/update.html', template_data)
+    return render(request,'3AK/medicalinfo/update.html', template_data)

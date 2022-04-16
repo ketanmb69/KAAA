@@ -28,7 +28,7 @@ def list_view(request):
         template_data['query'] = Appointment.objects.filter(patient=request.user.account)
     else:
         template_data['query'] = Appointment.objects.all()
-    return render(request, 'virtualclinic/appointment/list.html', template_data)
+    return render(request, '3AK/appointment/list.html', template_data)
 
 
 def calendar_view(request):
@@ -44,7 +44,7 @@ def calendar_view(request):
     # Proceed with rest of the view
     appointment.parse_appointment_cancel(request, template_data)  # parse appointment cancelling
     template_data['events'] = appointment.parse_appointments(request)   # Build list of appointments
-    return render(request, 'virtualclinic/appointment/calendar.html', template_data)
+    return render(request, '3AK/appointment/calendar.html', template_data)
 
 
 def update_view(request):
@@ -104,7 +104,7 @@ def update_view(request):
     elif request.user.account.role == Account.ACCOUNT_DOCTOR:
         form.disable_field('doctor')
     template_data['form'] = form
-    return render(request, 'virtualclinic/appointment/update.html', template_data)
+    return render(request, '3AK/appointment/update.html', template_data)
 
 
 def create_view(request):
@@ -160,4 +160,4 @@ def create_view(request):
     elif request.user.account.role == Account.ACCOUNT_DOCTOR:
         form.disable_field('doctor')
     template_data['form'] = form
-    return render(request, 'virtualclinic/appointment/create.html',template_data)
+    return render(request, '3AK/appointment/create.html',template_data)
