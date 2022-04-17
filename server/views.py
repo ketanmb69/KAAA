@@ -49,7 +49,7 @@ def authentication_check(request, required_roles=None, required_GET=None):
     """
     # Authentication check. Users not logged in cannot view this page
     if not request.user.is_authenticated:
-        request.session['alert_danger'] = "You must be logged into VirtualClinic to view that page."
+        request.session['alert_danger'] = "You must be logged into 3AK Pharma to view that page."
         return HttpResponseRedirect('/')
     # Sanity Check. Users without accounts cannot interact with virtual clinic
     try:

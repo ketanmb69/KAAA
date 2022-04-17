@@ -28,8 +28,10 @@ def setup_view(request):
         request.session['alert_success'] = "Setup has already been completed."
         return HttpResponseRedirect('/')
     # Get template data from the session
+
     template_data = views.parse_session(request,{'form_button':"Register"})
     # Proceed with rest of the view
+
     if request.method == 'POST':
         form = AccountRegisterForm(request.POST)
         if form.is_valid():
@@ -74,7 +76,8 @@ def logout_view(request):
     django_logout(request)
     domain = 'dev-agjm0v5l.us.auth0.com'
     client_id = 'aPkVKlG3BmygMNpBpPE2r7tetWoK6llH'
-    return_to = 'http://3akpharma.us-east-1.elasticbeanstalk.com/'
+    return_to = 'http://localhost:8000/'
+   # return_to = 'http://3akpharma.us-east-1.elasticbeanstalk.com/'
     return HttpResponseRedirect(f'https://{domain}/v2/logout?client_id={client_id}&returnTo={return_to}')
 
 def login_view(request):
@@ -146,7 +149,7 @@ def register_view(request):
             
             logger.log(Action.ACTION_ACCOUNT, "Account Login", user.account)
             login(request,user)
-            request.session['alert_success'] = "Successfully registered with VirtualClinic."
+            request.session['alert_success'] = "Successfully registered with 3AK Pharma."
             is_auth(form)
             return HttpResponseRedirect('/profile/')
     else:

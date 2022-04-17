@@ -7,7 +7,7 @@
     <p class="lead">Navigate through the 3AK Pharma medical system using the bar on the left-hand side of the browser.</p>
     {% if user.account.role <= 20 %}
         <div class="col-md-7">
-            <div class="panel panel-primary">
+            <div class="panel panel-success">
                 <div class="panel-heading">Schedule at a glance</div>
                 <div class="panel-body">
                   {% include "3AK/appointment/appointment_calendar.html" %}
@@ -24,7 +24,7 @@
         <div class="col-md-5">
     {% elif user.account.role == 30 %}
         <div class="col-md-6">
-            <div class="panel panel-primary">
+            <div class="panel panel-success">
                 <div class="panel-heading">All System Statistics</div>
                 <div class="panel-body">
                     <table class="table table-striped table-condensed">
@@ -63,7 +63,7 @@
     {% else %}
         <div class="col-md-6">
     {% endif %}
-        <div class="panel panel-primary">
+        <div class="panel panel-success">
             <div class="panel-heading">Recent messages</div>
             <div class="panel-body">
                 {% include "3AK/message/simple_table.html" %}

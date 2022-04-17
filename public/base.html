@@ -19,9 +19,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.2/fullcalendar.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+    <style>
+        /* Modify the background color */
+         
+        .navbar-custom {
+            background-color: rgb(241, 243, 144);
+        }
+        /* Modify brand and text color */
+         
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-text {
+            color: green;
+        }
+    </style>
 </head>
-<body>
-    <nav class="navbar navbar-default navbar-static-top">
+<body style="background-color:rgb(219, 247, 250)">
+    <nav class="navbar navbar-custom">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -49,7 +62,7 @@
                         </li>
                     {% else %}
                         <li>
-                            <p class="nav navbar-text" style="color: #FFF">Not signed in</p>
+                            <p class="nav navbar-text" style="color: rgb(122, 31, 31)">Not signed in</p>
                         </li>
                     {% endif %}
                     <li>
@@ -61,7 +74,7 @@
         </div>
     </nav>
     {% if user|isAuthenticated %}
-        <nav class="navbar navbar-default sidebar" role="navigation">
+        <nav class="navbar navbar-custom sidebar" role="navigation">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
