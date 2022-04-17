@@ -76,8 +76,8 @@ def logout_view(request):
     django_logout(request)
     domain = 'dev-agjm0v5l.us.auth0.com'
     client_id = 'aPkVKlG3BmygMNpBpPE2r7tetWoK6llH'
-    return_to = 'http://localhost:8000/'
-   # return_to = 'http://3akpharma.us-east-1.elasticbeanstalk.com/'
+    #return_to = 'http://localhost:8000/'
+    return_to = 'http://3akpharma.us-east-1.elasticbeanstalk.com/'
     return HttpResponseRedirect(f'https://{domain}/v2/logout?client_id={client_id}&returnTo={return_to}')
 
 def login_view(request):
