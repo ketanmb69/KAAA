@@ -1,0 +1,69 @@
+service: django-aws-lambda
+
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-prune-plugin
+  - serverless-python-requirements
+  - serverless-wsgi
+useDotenv: true
+
+custom:
+  dotenv:
+    logging: false
+  pythonRequirements:
+    dockerizePip: non-linux
+    zip: true
+    fileName: requirements.txt
+  stage: ${env:STAGE}
+  wsgi:
+    app: 3ak.wsgi.application
+    packRequirements: false
+  prune:
+    automatic: true
+    number: 3
+
+functions:
+  - app:
+      handler: wsgi_handler.handler
+      events:
+        - http: ANY /
+        - http: ANY /{proxy+}
+      timeout: 30
+
+provider:
+  name: aws
+  role: 
+    - arn:aws:iam::179024428398:role/LabRole
+    - arn:aws:iam::179024428398:role/robomaker_students
+  profile: 3akpharma
+  region: us-east-1
+  runtime: python3.8
+  versionFunctions: false
+  stage: production
+  stackName: pharma3ak
+  timeout: 60
+  # vpc:
+  #   securityGroupIds:
+  #     - sg-07bec00a3e2afe0d2
+  #     - sg-072f06a098fa59a62
+  #   subnetIds:
+  #     - subnet-065588da7b835f2b9
+  #     - subnet-0e78ac25b5142713d
+  #     - subnet-076b470b63898f9e1
+  deploymentBucket:
+    name: ${env:DEPLOYMENT_BUCKET}
+  apiGateway:
+    shouldStartNameWithService: true
+  lambdaHashingVersion: 20201221
+
+package:
+  individually:
+    true
+  exclude:
+    - .git/**
+    - .github/**
+    - .serverless/**
+    - static/**
+    - .cache/**
+    - .pytest_cache/**
+    - node_modules/**

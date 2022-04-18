@@ -21,7 +21,7 @@
             <th>Medication</th>
             <th>Strength</th>
             <th>Date</th>
-            <th>Number of Refill(s)</th>
+            <th>Number of Take(s)</th>
             <th>Status</th>
             <th data-defaultsort='disabled'>Options</th>
             <th>Invoice</th>
@@ -45,7 +45,7 @@
                                             '{{ prescription.pk }}'
                                             '{{ prescription.medication }}',
                                             '{{ prescription.patient.profile }}'
-                                        {% endautoescape %});
+                                        {% endautoescape %};
                                     }
                                 </script>
                                 <button onclick="proxy{{ prescription.pk }}()" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#form-modal">Delete</button>

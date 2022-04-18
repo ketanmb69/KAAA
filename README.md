@@ -1,97 +1,52 @@
-# 3AK - An Integrated Care System
+# 3AK Pharma - An Integrated Cloud Based Heathcare Solution
 
-[![Build Status](https://travis-ci.org/mishal23/virtual-clinic.svg?branch=master)](https://travis-ci.org/mishal23/virtual-clinic)
-[![Coverage Status](https://img.shields.io/codecov/c/github/mishal23/virtual-clinic.svg)](https://codecov.io/gh/mishal23/virtual-clinic)
-[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/1873/badge)](https://bestpractices.coreinfrastructure.org/projects/1873)
-![my website](https://img.shields.io/website-up-down-green-red/http/virtual-clinic.herokuapp.com.svg?label=website)
-[![Commits](https://github-basic-badges.herokuapp.com/commits/mishal23/virtual-clinic.svg)]()
-[![License](https://github-basic-badges.herokuapp.com/license/mishal23/virtual-clinic.svg)]()
-[![Pulls](https://github-basic-badges.herokuapp.com/pulls/mishal23/virtual-clinic.svg)]()
-[![Issues](https://github-basic-badges.herokuapp.com/issues/mishal23/virtual-clinic.svg)]()
+## Installation steps 
 
-A software to simplify the process of Health Care in hospitals to help the patients, doctor, labs, chemist.
+### Dependencies to be installed on Linux system
 
-## Introduction
+```bash
+sudo apt-get update
+sudo apt-get install python3-pip
+sudo pip install virtualenv
+sudo apt-get install libmysqlclient-dev
+```
 
-- Everything is well documented, please take a look at [docs](./docs) folder.
-- All the required UML Diagrams are also drawn.
-- Finally it is also deployed: http://virtual-clinic.herokuapp.com/
-- Steps to setup the project are mentioned [here](./docs/INSTALLATION.md)
-- Steps to deploy are mentioned [here](./docs/DEPLOY.md)
+### Create virtual environment and install the required dependencies in virtual environment
 
-## Features:
+```bash
+mkdir 3AKPharma
+cd 3AKPharma
+source env/bin/activate
+git clone https://github.com/ketanmb69/3AKPharma.git
+pip install --upgrade setuptools
+cd 3AK
+pip install -r requirements.txt
+```
 
-- Common Login for all users
-- Patient Registration
+## Run the application from scratch
+```bash
+find . -name migrations | xargs rm -rf 
+rm -rf db.sqlite3
+python manage.py makemigrations
+python manage.py migrate
+python manage.py migrate --run-syncdb
+python manage.py runserver
+```
+## Steps to Deploy on Elastic Beanstalk
 
-### Admin
+- Make sure the file named **Procfile** is present in the environment - ```web: gunicorn 3AK.wsgi```
+- make sure the directory named **.ebextensions** is present and **django.config** has below details
+  - ```python
+    option_settings:
+      aws:elasticbeanstalk:container:python:
+        WSGIPath: 3AK/wsgi.py
+    ```
+- Create Sample Elastic Beanstalk **Worker** environment.
+  - Go to the additional configuration settings and update as **Highly Available application** (It will spawn the mutliple instances.)
 
-- Add Doctor/Lab/Chemist
-- Archive Users
-- Restore Archived Users
-- Add/Delete Speciality/Symptoms
-- Add Hospitals
-- View Activity
-- View System Statistics
-- View/Send Messages
-- Update Profile
-- Change Password
-
-### Patient
-
-- Create Appointments
-- Update Medical Information
-- View Prescriptions
-- View Medical Tests
-- View/Send Messages
-- Generate Invoice of Prescription
-- Update Profile
-- Change Password
-
-### Doctor
-
-- Consult Appointments
-- View/Update/Generate Prescriptions
-- View Medical Information of patients
-- Update Profile
-- Change Password
-
-### Lab
-
-- Upload Medical Tests
-- View/Send Messages
-- Update Profile
-- Change Password
-
-### Chemist
-
-- Update Medicine Delivery Status(Update Prescriptions)
-- View/Send Messages
-- Update Profile
-- Change Password
-
-## Structure of Repository
-
-- All the documents are in `docs` folder.
-- All the UML Diagrams are in `UML Diagrams` folder.
-- In the 3AK folder
-  - `public` folder contains all the templates.
-  - `server` folder contains the views (business logic).
-  - `testing` folder contains all the tests cases.
-  - `3AK` folder contains Django configuration files for the project.
-
-## Contributing
-
-- The repository is open for contributions from all interested developers.
-- Also, you can write by opening an Issue and also solve a current issue if possible.
-- Fork this project to your Github acoount.
-- After forking, clone the repository to local system and make the necessary changes.
-- Kindly send Pull Requests with explanation as to what changes you have done.
-
-## Feature Requests
-
-- Incase you would like to see a feature to be implemented in this project, please open an issue, or send an email to me!
-
-## License
-
-- The software is under MIT License
+- Create a Code Pipeline and choose the source control as per convinience.
+  - Skip the build stage.
+  - Select the Elastic Beanstalk as a deployment provider.
+  - Specify the Elastic Beanstalk application name, and the Environment name as provided while creating the Beanstalk sample application.
+  - Create a pipeline.
+  - After successful deployment,, go to the Elastic beanstalk environment and open the application link. it will be a **Load Balancer** link.

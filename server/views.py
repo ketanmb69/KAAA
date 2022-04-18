@@ -51,7 +51,7 @@ def authentication_check(request, required_roles=None, required_GET=None):
     if not request.user.is_authenticated:
         request.session['alert_danger'] = "You must be logged into 3AK Pharma to view that page."
         return HttpResponseRedirect('/')
-    # Sanity Check. Users without accounts cannot interact with virtual clinic
+   
     try:
         request.user.account
     except ObjectDoesNotExist:
