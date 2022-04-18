@@ -21,7 +21,7 @@ class GroupViewSet(viewsets.ModelViewSet):
 #     queryset = Account.objects.all()
 #     serializer_class = RoleSerializer
 
-
+#Creating a POST Function for Account serializer
 class AccountViews(APIView):
     def post(self, request):
         serializer = AccountSerializer(data=request.data)
@@ -30,7 +30,8 @@ class AccountViews(APIView):
             return Response({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)
         else:
             return Response({"status": "error", "data": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
-    
+
+#Creating a GET Function for Account serializer    
     def get(self, request, id=None):
         if id:
             item = Account.objects.get(id=id)
@@ -41,6 +42,7 @@ class AccountViews(APIView):
         serializer = AccountSerializer(items, many=True)
         return Response({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)
 
+#Creating an Update Function for Account serializer
     def patch(self, request, id=None):
         item = Account.objects.get(id=id)
         serializer = AccountSerializer(item, data=request.data, partial=True)
@@ -50,6 +52,7 @@ class AccountViews(APIView):
         else:
             return Response({"status": "error", "data": serializer.errors})
 
+#Creating a delete Function for Account serializer
     def delete(self, request, id=None):
         item = get_object_or_404(Account, id=id)
         item.delete()
